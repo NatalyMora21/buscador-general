@@ -2,7 +2,7 @@ import { SEARCH_ERROR, SEARCH_SUCCESS } from "../actions/buscadorAction"
 
 
 const initialState= {
-    info: [],
+    info: [[],[],[],[]],
     notFound :""
 }
 
@@ -17,12 +17,6 @@ const search = (state=initialState, action)=> {
                 notFound: ""
             }
 
-        case SEARCH_ERROR:
-
-            return {
-                info: [],
-                notFound: "No hay información relacionada con la busqueda"
-            }
 
         default: 
             return state;
