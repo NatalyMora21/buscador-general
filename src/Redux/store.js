@@ -2,4 +2,10 @@ import { createStore } from 'redux';
 
 import search from '../Redux/reducers/buscadorReducer'
 
-const store = createStore(search);
+import { composeWithDevTools} from "redux-devtools-extension"
+
+
+
+const store = createStore(search,composeWithDevTools());
+
+export default store;

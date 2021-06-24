@@ -2,11 +2,11 @@ import { SEARCH_ERROR, SEARCH_SUCCESS } from "../actions/buscadorAction"
 
 
 const initialState= {
-    info = [],
-    notFound = ""
+    info: [],
+    notFound :""
 }
 
-const buscador = (state=initialState, action)=> {
+const search = (state=initialState, action)=> {
 
     switch (action.type) {
 
@@ -30,4 +30,4 @@ const buscador = (state=initialState, action)=> {
     }
 }
 
-export default buscador;
+export default search;

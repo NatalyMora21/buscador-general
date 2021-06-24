@@ -5,7 +5,7 @@ export const SEARCH_ERROR= 'SEARCH_ERROR';
 export const searchSucces=(info)=>{
     return {
         type:SEARCH_SUCCESS,
-        payload=info
+        payload:info
     }
 }
 export const searchNotfound=(error)=>{

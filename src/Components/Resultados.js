@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Resultado = ()=>{
+const Resultados = ()=>{
 
     return(
         <div>
@@ -9,4 +9,4 @@ const Resultado = ()=>{
     )
 }
 
-export default Resultado;
+export default Resultados;
