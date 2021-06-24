@@ -3,7 +3,7 @@ import { SEARCH_ERROR, SEARCH_SUCCESS } from "../actions/buscadorAction"
 
 const initialState= {
     info: [[],[],[],[]],
-    notFound :""
+    notFound :false
 }
 
 const search = (state=initialState, action)=> {
@@ -14,7 +14,7 @@ const search = (state=initialState, action)=> {
 
             return {
                 info: action.payload,
-                notFound: ""
+                notFound: true
             }
 
 
