@@ -40,3 +40,10 @@ h5 {
 .alert {
   padding: 10px;
 }
+
+h4{
+  text-align: left;
+  font-size: 20px;
+  padding: 10px;
+  color:#202E5D;
+}
