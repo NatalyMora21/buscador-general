@@ -14,8 +14,9 @@ const ResultSearch = ()=>{
             return (
                 infosearch.map(inforesult=>(
                     <div className="list-group-item item-list">
+                        
                         <div class="d-flex w-100 ">
-                            {modulo=='conciliaciones'?<h5 class="mb-1"> {inforesult.conciliationName}</h5>: <h5 class="mb-1">{inforesult.name}</h5> }
+                            {modulo=='conciliaciones'?<h5 class="mb-1"> {inforesult.conciliationName}</h5>: <h5 class="mb-1">{inforesult.name} {inforesult.dashboardName}</h5> }
                         </div>
                         <p class="mb-1 ">{inforesult.description.substr(1,100)}</p>
                         <small>{inforesult.timestamp.createdAt}</small>
@@ -72,9 +73,7 @@ const ResultSearch = ()=>{
                 <a className="btn btn-primary option-info" data-bs-toggle="collapse" href="#module4" role="button" aria-expanded="false" aria-controls="collapseExample" >
                     Usuarios <span class="badge bg-secondary rounded-pill cant">{buscador.info[3].length}</span>
                 </a>
-                <a className="btn btn-primary option-info" data-bs-toggle="collapse" href="#module5" role="button" aria-expanded="false" aria-controls="collapseExample" >
-                Manifest <span class="badge bg-secondary rounded-pill cant">{buscador.info[4].length}</span>
-                </a>
+
 
                 <div className="collapse" id="module1" data-bs-parent="#selector">
                     <div className="card card-body">
@@ -101,12 +100,7 @@ const ResultSearch = ()=>{
                         {showsearchdif(buscador.info[3], "user")}
                     </div>
                 </div>
-                <div className="collapse" id="module5" data-bs-parent="#selector">
-                    <div className="card card-body">
-                        <h4>Manifest</h4>
-                        {showsearchdif(buscador.info[4], "manifest")}
-                    </div>
-                </div>
+
             </div>
         }
         </div>

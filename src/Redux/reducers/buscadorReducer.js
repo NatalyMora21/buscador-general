@@ -1,7 +1,7 @@
 import {SEARCH_SUCCESS } from "../actions/buscadorAction"
 
 const initialState= {
-    info: [[],[],[],[],[]],
+    info: [[],[],[],[]],
     notFound :false
 }
 
