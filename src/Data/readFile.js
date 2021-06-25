@@ -1,9 +1,11 @@
 import fetch from 'node-fetch';
 
+//Función para poder acceder a la información que se encuentra en los archivos json
 const readFile= async(value)=>{
-    let file;
 
+    let file;
     switch (value) {
+
         case 'conciliaciones':
             file= '/conciliaciones.json'
             break;
@@ -19,15 +21,17 @@ const readFile= async(value)=>{
         case 'usuarios':
             file= '/usuarios.json'
             break;
+
+        case 'manifest':
+            file= '/manifest.json'
+            break;
         default:
             break;
     }
 
     const response= await fetch(file);
     const newres= await response.json();
-
     return  newres;
-
 }
 
 export default readFile;

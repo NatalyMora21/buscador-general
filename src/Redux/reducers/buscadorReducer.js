@@ -1,8 +1,7 @@
-import { SEARCH_ERROR, SEARCH_SUCCESS } from "../actions/buscadorAction"
-
+import {SEARCH_SUCCESS } from "../actions/buscadorAction"
 
 const initialState= {
-    info: [[],[],[],[]],
+    info: [[],[],[],[],[]],
     notFound :false
 }
 
@@ -17,10 +16,8 @@ const search = (state=initialState, action)=> {
                 notFound: true
             }
 
-
         default: 
             return state;
-
     }
 }
 
