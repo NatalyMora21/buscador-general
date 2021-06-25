@@ -7,50 +7,56 @@ const ResultSearch = ()=>{
         state
     )
 
-    const validateLongitud= (infosearch)=> {
+    //Función que muestra la información filtrada según el modulo
+    const showsearch = (infosearch, modulo)=>{
 
         if (infosearch.length>0){
-            return true
+            return (
+                infosearch.map(inforesult=>(
+                    <div className="list-group-item item-list">
+                        <div class="d-flex w-100 ">
+                            {modulo=='conciliaciones'?<h5 class="mb-1"> {inforesult.conciliationName}</h5>: <h5 class="mb-1">{inforesult.name}</h5> }
+                        </div>
+                        <p class="mb-1 ">{inforesult.description.substr(1,100)}</p>
+                        <small>{inforesult.timestamp.createdAt}</small>
+                    </div>
+                ))
+            )
         }
-        else{
-            return false
+        else {
+            return < div className="list-group-item item-list">
+                        <p>No hay información relacionada</p>
+                    </div>
         }
-
     }
 
-    const showsearch = (infosearch)=>{
+    //Función que muestra la información filtrada según el modulo, se crea para el modulo usuario y 
+    //manifest que no tienen el campo descripción
+    const showsearchdif = (infosearch , modulo)=>{
 
         if (infosearch.length>0){
             return (
                 infosearch.map(inforesult=>(
                     < div className="list-group-item item-list">
                         <div class="d-flex w-100 ">
-                            <h5 class="mb-1">{inforesult.conciliationName}</h5>
-                            
+                            {modulo=='user' ? <div><h5 class="mb-1">{inforesult.name.firstName} {inforesult.name.lastName} </h5> <small>{inforesult.createdAt}</small> </div>
+                            :<h5 class="mb-1">{inforesult.name} </h5> }
                         </div>
-                        <p class="mb-1 ">{inforesult.description.substr(1,100)}</p>
                     </div>
                 ))
             )
-            
-
         }
-
         else {
-            return <p>No hay información relacionada</p>
+            return < div className="list-group-item item-list">
+                        <p>No hay información relacionada</p>
+                    </div>
         }
-
     }
-
-    console.log(buscador);
 
     return(
 
-        
-
         <div>
-
-    {buscador.notFound && 
+        {buscador.notFound && 
 
             <div id="selector">
                 <a className="btn btn-primary option-info" data-bs-toggle="collapse" href="#module1" role="button" aria-expanded="false" aria-controls="collapseExample" >
@@ -66,43 +72,44 @@ const ResultSearch = ()=>{
                 <a className="btn btn-primary option-info" data-bs-toggle="collapse" href="#module4" role="button" aria-expanded="false" aria-controls="collapseExample" >
                     Usuarios <span class="badge bg-secondary rounded-pill cant">{buscador.info[3].length}</span>
                 </a>
+                <a className="btn btn-primary option-info" data-bs-toggle="collapse" href="#module5" role="button" aria-expanded="false" aria-controls="collapseExample" >
+                Manifest <span class="badge bg-secondary rounded-pill cant">{buscador.info[4].length}</span>
+                </a>
 
                 <div className="collapse" id="module1" data-bs-parent="#selector">
                     <div className="card card-body">
-                        {showsearch(buscador.info[0])}
+                        <h4>Conciliaciones</h4>
+                        {showsearch(buscador.info[0], "conciliaciones")}
                     </div>
                 </div>
                 <div className="collapse" id="module2" data-bs-parent="#selector">
                     <div className="card card-body">
-                        {showsearch(buscador.info[1])}
+                    <h4>Fuentes</h4>
+                        {showsearch(buscador.info[1], "fuentes")}
                     </div>
                 </div>
                 <div className="collapse" id="module3" data-bs-parent="#selector">
                     <div className="card card-body">
-
-                        <div class="list-group">
-                            {showsearch(buscador.info[2])}
-                        </div>
-                        
+                        <h4>Tableros</h4>
+                        {showsearch(buscador.info[2], "tablero")}
                     </div>
                 </div>
+       
                 <div className="collapse" id="module4" data-bs-parent="#selector">
                     <div className="card card-body">
-                        {showsearch(buscador.info[3])}
+                        <h4>Usuarios</h4>
+                        {showsearchdif(buscador.info[3], "user")}
                     </div>
                 </div>
-                
+                <div className="collapse" id="module5" data-bs-parent="#selector">
+                    <div className="card card-body">
+                        <h4>Manifest</h4>
+                        {showsearchdif(buscador.info[4], "manifest")}
+                    </div>
+                </div>
             </div>
-        
-    }
-    </div>
-        
-        
-
-
-        
-
-
+        }
+        </div>
     )
 }
 
